@@ -1,9 +1,9 @@
 package pl.skycash.zadanie_rekrutacyjne.crud_example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.skycash.zadanie_rekrutacyjne.crud_example.controller.dto.BookConvertDTO;
+import pl.skycash.zadanie_rekrutacyjne.crud_example.controller.dto.BookDTO;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.model.Book;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.service.BookService;
 
@@ -16,7 +16,22 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/books")
-    public List<Book> selectAllBooks(){
-        return bookService.selectAllBooks();
+    public List<BookDTO> selectAllBooks(){
+        return BookConvertDTO.convertToDTOs(bookService.selectAllBooks());
     }
+
+    @GetMapping("/books/{id}")
+    public Book selectBookById(@PathVariable long id){
+        return bookService.selectBookById(id);
+    }
+    @PostMapping("/books/add")
+    public Book addBook(@RequestBody Book book){
+        return bookService.addBook(book);
+    }
+
+    @DeleteMapping("/books/delete/{id}")
+    public void deleteBook(@PathVariable long id){
+        bookService.deleteBook(id);
+    }
+
 }
