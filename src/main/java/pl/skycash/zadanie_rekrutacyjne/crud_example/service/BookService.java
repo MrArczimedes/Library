@@ -1,31 +1,16 @@
 package pl.skycash.zadanie_rekrutacyjne.crud_example.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.model.Book;
-import pl.skycash.zadanie_rekrutacyjne.crud_example.repository.BookRepository;
 
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class BookService {
+public interface BookService {
 
-    private final BookRepository bookRepository;
+    List<Book> selectAllBooks();
 
-    public List<Book> selectAllBooks() {
-        return bookRepository.findAll();
-    }
+    Book selectBookById(long id);
 
-    public Book selectBookById(long id) {
-        return bookRepository.findAllById(id);
-    }
+    Book addBook(Book book);
 
-    public Book addBook(Book book) {
-        return bookRepository.save(book);
-    }
-
-    public void deleteBook(long id) {
-        bookRepository.deleteById(id);
-    }
+    void deleteBook(long id);
 }

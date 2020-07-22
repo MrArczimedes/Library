@@ -20,4 +20,10 @@ public class Book {
     private String author;
     private byte rate;
 
+    /*public Book(long categoryId, String name, String author, byte rate) {
+        this.author = author;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.rate = rate;
+    }*/
 }

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.model.Category;
-import pl.skycash.zadanie_rekrutacyjne.crud_example.service.CategoryService;
+import pl.skycash.zadanie_rekrutacyjne.crud_example.service.CategoryServiceImpl;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private final CategoryService categoryService;
+    private final CategoryServiceImpl categoryService;
 
     @GetMapping("/categories")
     public List<Category> selectAllCategories() {
-        return categoryService.selectAllCategories();
+        return categoryService.selectAllCategoriesWithBooks();
     }
 
 

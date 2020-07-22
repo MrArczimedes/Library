@@ -5,15 +5,16 @@ import org.springframework.web.bind.annotation.*;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.controller.dto.BookConvertDTO;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.controller.dto.BookDTO;
 import pl.skycash.zadanie_rekrutacyjne.crud_example.model.Book;
-import pl.skycash.zadanie_rekrutacyjne.crud_example.service.BookService;
+import pl.skycash.zadanie_rekrutacyjne.crud_example.service.BookServiceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 public class BookController {
 
-    private final BookService bookService;
+    private final BookServiceImpl bookService;
 
     @GetMapping("/books")
     public List<BookDTO> selectAllBooks(){
